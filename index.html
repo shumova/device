@@ -1,12 +1,529 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <title>HTML Academy: Девайс</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FCFCFC">
+  <meta name="robots" content="index,follow">
 
-    <p>Репозиторий создан для обучения на профессиональном онлайн‑курсе «<a href="https://htmlacademy.ru/intensive/htmlcss">HTML и CSS. Профессиональная вёрстка сайтов</a>».</p>
+  <link rel="stylesheet" href="styles/style.css">
 
-  </body>
+  <title>device | Интернет-магазин цифровой техники</title>
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32.png">
+</head>
+<body class="page">
+    <header class="page__header container">
+    <nav class="page__nav page-nav">
+      <a class="page-nav__logo logo" href="index.html" aria-current="page">
+        <img class="logo__img" src="img/logo.svg" alt="device" width="145" height="36">
+      </a>
+      <div class="page-nav__user-menu-wrapper menu-wrapper">
+        <div class="page-nav__search search">
+          <form class="search__form" action="https://echo.htmlacademy.ru/" method="post">
+            <label class="visually-hidden" for="search">Введите интересующий вас запрос.</label>
+            <!-- при проверке макета необходимо в devTools зафиксировать состояние :active поля :search__field для корректной отработки стилей этого поля и кнопки .search__button согласно стайлгайду (в "жизни" это состояние предполагается фиксировать с помощью js) -->
+            <input class="search__field" type="text" id="search" name="search" placeholder="Поиск по сайту">
+            <button class="search__button" type="submit" tabindex="-1">Найти</button>
+          </form>
+        </div>
+        <ul class="page-nav__user-menu user-menu">
+          <li class="user-menu__item user-menu__item--account">
+            <a class="user-menu__link link-with-icon link-with-icon--login" href="#">Войти</a>
+            <button class="user-menu__button-logout" type="button">Выйти</button>
+          </li>
+          <li class="user-menu__item">
+            <a class="user-menu__link link-with-icon link-with-icon--compare" href="#">Сравнить</a>
+          </li>
+          <li class="user-menu__item">
+            <a class="user-menu__link user-menu__link--basket link-with-icon link-with-icon--basket" href="#">Корзина</a>
+            <!-- popover для корзины должнен открываться с помощью js добавлением класса popover-basket--open; для его появления при проверке макета также можно выбрать в devTools состояние :active для ссылки .user-menu__link--basket-->
+            <div class="user-menu__popover popover-basket">
+              <ul class="popover-basket__list">
+                <li class="popover-basket__item">
+                  <a class="popover-basket__img-link" href="#" aria-label="Подробнее о любительской селфи-палке.">
+                    <picture class="popover-basket__img-container">
+                      <source srcset="img/product/product-1-thumbnail@1x.webp 1x, img/product/product-1-thumbnail@2x.webp 2x" type="image/webp">
+                      <img class="popover-basket__img product-img" src="img/product/product-1-thumbnail@1x.jpg" srcset="img/product/product-1-thumbnail@2x.jpg 2x" width="41" height="43" alt="">
+                    </picture>
+                  </a>
+                  <a class="popover-basket__title-link" href="#">Любительская <br>селфи-палка</a>
+                  <button class="popover-basket__button-delete button-iconic button-iconic--delete button-iconic--palette-1" type="button">
+                    <span class="visually-hidden">Удалить</span>
+                  </button>
+                </li>
+                <li class="popover-basket__item">
+                  <a class="popover-basket__img-link" href="#" aria-label="Подробнее о профессиональной селфи-палке.">
+                    <picture class="popover-basket__img-container">
+                      <source srcset="img/product/product-2-thumbnail@1x.webp 1x, img/product/product-2-thumbnail@2x.webp 2x" type="image/webp">
+                      <img class="popover-basket__img product-img" src="img/product/product-2-thumbnail@1x.jpg" srcset="img/product/product-2-thumbnail@2x.jpg 2x" width="41" height="43" alt="">
+                    </picture>
+                  </a>
+                  <a class="popover-basket__title-link" href="#">Професcиональная селфи-палка</a>
+                  <button class="popover-basket__button-delete button-iconic button-iconic--delete button-iconic--palette-1" type="button">
+                    <span class="visually-hidden">Удалить</span>
+                  </button>
+                </li>
+              </ul>
+              <dl class="popover-basket__checkout checkout">
+                <dt class="checkout__title checkout__products-title">Товаров:</dt>
+                <dd class="checkout__value checkout__products-value">2</dd>
+                <dt class="checkout__title checkout__cost-title">Сумма:</dt>
+                <dd class="checkout__value checkout__cost-value">2000 ₽</dd>
+              </dl>
+              <div class="popover-basket__basket-button-wrapper">
+                <button class="button-additional button-additional--palette-1" type="button">Открыть корзину</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="page-nav__site-menu-wrapper site-menu">
+        <div class="site-menu__item site-menu__item--catalog">
+          <a href="#" class="site-menu__link site-menu__link--catalog link-details">Каталог товаров</a>
+          <!-- popover-меню для каталога должно открываться с помощью js добавлением класса popover-catalog--open; для появления меню при проверке макета также можно выбрать в devTools состояние :active для ссылки .site-menu__link--catalog-->
+          <div class="site-menu__popover popover-catalog">
+            <ul class="popover-catalog__list">
+              <li class="popover-catalog__item">
+                <a href="#" class="popover-catalog__link link-narrow link-narrow--palette-1">Виртуальная реальность</a>
+              </li>
+              <li class="popover-catalog__item">
+                <a href="#" class="popover-catalog__link link-narrow link-narrow--palette-1">Фитнес-браслеты</a>
+              </li>
+              <li class="popover-catalog__item">
+                <a href="#" class="popover-catalog__link link-narrow link-narrow--palette-1">Квадрокоптеры</a>
+              </li>
+              <li class="popover-catalog__item">
+                <a href="catalog.html" class="popover-catalog__link link-narrow link-narrow--palette-1">Моноподы для cелфи</a>
+              </li>
+              <li class="popover-catalog__item">
+                <a href="#" class="popover-catalog__link link-narrow link-narrow--palette-1">Умные часы</a>
+              </li>
+              <li class="popover-catalog__item popover-catalog__item--action-cameras">
+                <a href="#" class="popover-catalog__link link-narrow link-narrow--palette-1">Экшн-камеры</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <ul class="page-nav__site-menu site-menu">
+          <li class="site-menu__item site-menu__item--delivery">
+            <a href="#" class="site-menu__link link-basic link-basic--palette-1">Доставка</a>
+          </li>
+          <li class="site-menu__item site-menu__item--margin-right site-menu__item--guarantee">
+            <a href="#" class="site-menu__link link-basic link-basic--palette-1">Гарантия</a>
+          </li>
+          <li class="site-menu__item site-menu__item--contacts">
+            <a href="#" class="site-menu__link link-basic link-basic--palette-1">Контакты</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main class="page__main main">
+    <h1 class="visually-hidden">Главная страница интернет-магазина цифровой техники device.</h1>
+    <section class="main__slider slider container">
+      <h2 class="visually-hidden">Промотируемые товары.</h2>
+      <ol class="slider__list">
+        <li class="slider__item slider__item--current">
+          <h3 class="visually-hidden">Квадрокоптер с лазером.</h3>
+          <div class="slider__product">
+            <picture class="slider__img-wrapper">
+              <source srcset="img/slider/slider-1@1x.webp 1x, img/slider/slider-1@2x.webp 2x" type="image/webp">
+              <img class="slider__img product-img" src="img/slider/slider-1@1x.png" srcset="img/slider/slider-1@2x.png 2x" alt="" width="560" height="560">
+            </picture>
+            <button class="slider__button-prev button-slide button-slide--prev" type="button">
+              <span class="visually-hidden">Предыдущий слайд</span>
+            </button>
+            <button class="slider__button-next button-slide button-slide--next" type="button">
+              <span class="visually-hidden">Следующий слайд</span>
+            </button>
+          </div>
+          <div class="slider__offer">
+            <div class="slider__text">
+              <p class="slider__title section-title">Порхает как бабочка, <br>жалит как пчела!</p>
+              <p class="slider__text-unit">Этот обычный, на&nbsp;первый взгляд, квадрокоптер оснащён мощным лазером, замаскированным под стандартную камеру.</p>
+             </div>
+             <div class="slider__controls">
+               <a class="slider__more button-accent button-accent--light" href="#">Подробнее</a>
+               <ol class="slider__dots">
+                 <li class="slider__dot">
+                   <button class="button-dot button-dot--current" type="button">
+                     <span class="visually-hidden">Первый слайд</span>
+                   </button>
+                 </li>
+                 <li class="slider__dot">
+                   <button class="button-dot" type="button">
+                     <span class="visually-hidden">Второй слайд</span>
+                   </button>
+                 </li>
+                 <li class="slider__dot">
+                   <button class="button-dot" type="button">
+                     <span class="visually-hidden">Третий слайд</span>
+                   </button>
+                 </li>
+               </ol>
+             </div>
+             <dl class="slider__description-list">
+               <dt class="slider__term">Дальность полета</dt>
+               <dd class="slider__definition">800&nbsp;м</dd>
+               <dt class="slider__term">Радиус поражения</dt>
+               <dd class="slider__definition">50&nbsp;м</dd>
+             </dl>
+          </div>
+        </li>
+        <li class="slider__item slider__item--next">
+          <h3 class="visually-hidden">Фитнес-браслеты.</h3>
+          <div class="slider__product">
+            <picture class="slider__img-wrapper">
+              <source srcset="img/slider/slider-2@1x.webp 1x, img/slider/slider-2@2x.webp 2x" type="image/webp">
+              <img class="slider__img product-img" src="img/slider/slider-2@1x.png" srcset="img/slider/slider-2@2x.png 2x" alt="" width="560" height="560">
+            </picture>
+            <button class="slider__button-prev button-slide button-slide--prev" type="button">
+              <span class="visually-hidden">Предыдущий слайд</span>
+            </button>
+            <button class="slider__button-next button-slide button-slide--next" type="button">
+              <span class="visually-hidden">Следующий слайд</span>
+            </button>
+          </div>
+          <div class="slider__offer">
+            <div class="slider__text">
+              <p class="slider__title section-title">Худеем <br>правильно!</p>
+              <p class="slider__text-unit">Мотивирующие фитнес-браслеты помогут найти в&nbsp;себе силы не&nbsp;пропускать занятия и&nbsp;соблюдать диету.</p>
+            </div>
+            <div class="slider__controls">
+              <a class="slider__more button-accent button-accent--light" href="#">Подробнее</a>
+              <ol class="slider__dots">
+                <li class="slider__dot">
+                  <button class="button-dot" type="button">
+                    <span class="visually-hidden">Первый слайд</span>
+                  </button>
+                </li>
+                <li class="slider__dot">
+                  <button class="button-dot button-dot--current" type="button">
+                    <span class="visually-hidden">Второй слайд</span>
+                  </button>
+                </li>
+                <li class="slider__dot">
+                  <button class="button-dot" type="button">
+                    <span class="visually-hidden">Третий слайд</span>
+                  </button>
+                </li>
+              </ol>
+            </div>
+            <dl class="slider__description-list slider__description-list--diff-size-1">
+              <dt class="slider__term">Без подзарядки</dt>
+              <dd class="slider__definition slider__definition--diff-size">48 часов</dd>
+            </dl>
+          </div>
+        </li>
+        <li class="slider__item slider__item--before">
+          <h3 class="visually-hidden">Самая длинная палка для селфи.</h3>
+          <div class="slider__product">
+            <picture class="slider__img-wrapper">
+              <source srcset="img/slider/slider-3@1x.webp 1x, img/slider/slider-3@2x.webp 2x" type="image/webp">
+              <img class="slider__img product-img" src="img/slider/slider-3@1x.png" srcset="img/slider/slider-3@2x.png 2x" alt="" width="560" height="560">
+            </picture>
+            <button class="slider__button-prev button-slide button-slide--prev" type="button">
+              <span class="visually-hidden">Предыдущий слайд</span>
+            </button>
+            <button class="slider__button-next button-slide button-slide--next" type="button">
+              <span class="visually-hidden">Следующий слайд</span>
+            </button>
+          </div>
+          <div class="slider__offer">
+            <div class="slider__text">
+              <p class="slider__title section-title">Делай селфи, <br>как Бен Стиллер!</p>
+              <p class="slider__text-unit">Самая длинная палка для селфи доступна в&nbsp;нашем магазине. Восемь (Восемь, Карл!) метров длиной и&nbsp;весом всего 5&nbsp;кг.</p>
+             </div>
+             <div class="slider__controls">
+               <a class="slider__more button-accent button-accent--light" href="#">Подробнее</a>
+               <ol class="slider__dots">
+                 <li class="slider__dot">
+                   <button class="button-dot" type="button">
+                     <span class="visually-hidden">Первый слайд</span>
+                   </button>
+                 </li>
+                 <li class="slider__dot">
+                   <button class="button-dot" type="button">
+                     <span class="visually-hidden">Второй слайд</span>
+                   </button>
+                 </li>
+                 <li class="slider__dot">
+                   <button class="button-dot button-dot--current" type="button">
+                     <span class="visually-hidden">Третий слайд</span>
+                   </button>
+                 </li>
+               </ol>
+             </div>
+             <dl class="slider__description-list slider__description-list--diff-size-2">
+               <dt class="slider__term">Длина палки</dt>
+               <dd class="slider__definition">8,5&nbsp;м</dd>
+               <dt class="slider__term">Вес палки</dt>
+               <dd class="slider__definition">5&nbsp;кг</dd>
+               <dt class="slider__term">Материал</dt>
+               <dd class="slider__definition">Карбон</dd>
+             </dl>
+          </div>
+        </li>
+      </ol>
+    </section>
+    <section class="main__categories categories container">
+      <h2 class="visually-hidden">Категории товаров.</h2>
+      <ul class="categories__list">
+        <li class="categories__item">
+          <a class="categories__link" href="#">
+            <picture class="categories__img-container">
+              <source srcset="img/popular/popular-1@1x.webp 1x, img/popular/popular-1@2x.webp 2x" type="image/webp">
+              <img class="categories__img" src="img/popular/popular-1@1x.png" srcset="img/popular/popular-1@2x.png 2x" alt="Очки виртуальной реальности." width="160" height="160">
+            </picture>
+            <h3 class="categories__title">Виртуальная реальность</h3>
+          </a>
+        </li>
+        <li class="categories__item">
+          <a class="categories__link" href="catalog.html">
+            <picture class="categories__img-container">
+              <source srcset="img/popular/popular-2@1x.webp 1x, img/popular/popular-2@2x.webp 2x" type="image/webp">
+              <img class="categories__img" src="img/popular/popular-2@1x.png" srcset="img/popular/popular-2@2x.png 2x" alt="Селфи-палка с телефоном." width="160" height="160">
+            </picture>
+            <h3 class="categories__title">Моноподы для&nbsp;селфи</h3>
+          </a>
+        </li>
+        <li class="categories__item">
+          <a class="categories__link" href="#">
+            <picture class="categories__img-container">
+              <source srcset="img/popular/popular-3@1x.webp 1x, img/popular/popular-3@2x.webp 2x" type="image/webp">
+              <img class="categories__img" src="img/popular/popular-3@1x.png" srcset="img/popular/popular-3@2x.png 2x" alt="Видеокамера для активных съёмок." width="160" height="160">
+            </picture>
+            <h3 class="categories__title">Экшн-камеры</h3>
+          </a>
+        </li>
+        <li class="categories__item">
+          <a class="categories__link" href="#">
+            <picture class="categories__img-container">
+              <source srcset="img/popular/popular-4@1x.webp 1x, img/popular/popular-4@2x.webp 2x" type="image/webp">
+              <img class="categories__img" src="img/popular/popular-4@1x.png" srcset="img/popular/popular-4@2x.png 2x" alt="Браслет для тренировок." width="160" height="160">
+            </picture>
+            <h3 class="categories__title">Фитнес-браслеты</h3>
+          </a>
+        </li>
+        <li class="categories__item">
+          <a class="categories__link" href="#">
+            <picture class="categories__img-container">
+              <source srcset="img/popular/popular-5@1x.webp 1x, img/popular/popular-5@2x.webp 2x" type="image/webp">
+              <img class="categories__img" src="img/popular/popular-5@1x.png" srcset="img/popular/popular-5@2x.png 2x" alt="Электронные многофункциональные часы." width="160" height="160">
+            </picture>
+            <h3 class="categories__title">Умные часы</h3>
+          </a>
+        </li>
+        <li class="categories__item">
+          <a class="categories__link" href="#">
+            <picture class="categories__img-container">
+              <source srcset="img/popular/popular-6@1x.webp 1x, img/popular/popular-6@2x.webp 2x" type="image/webp">
+              <img class="categories__img" src="img/popular/popular-6@1x.png" srcset="img/popupar/popular-6@2x.png 2x" alt="Квадрокоптер с видеокамерой." width="160" height="160">
+            </picture>
+            <h3 class="categories__title">Квадрокоптеры</h3>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section class="main__features features">
+      <h2 class="visually-hidden">Сервисы</h2>
+      <div class="features__content container">
+          <!-- В стилях для .features__label есть закомментированное описание состояния :focus, которое требуется по стайлгайду.
+           Стили можно раскомментровать, они отрабатывают корректно, но на мой взгляд сейчас только нарушают "визуальный порядок"
+           работы элемента. Поэтому они закомментированы для возможного дальнейшего использования с доработкой перехода состояний на js -->
+          <input class="features__checkbox features__checkbox--delivery visually-hidden" type="radio" id="delivery" name="features" checked>
+          <label class="features__label features__label--delivery button-accent button-accent--switch" for="delivery">Доставка</label>
+          <div class="features__description features-description features-description--delivery">
+            <h3 class="features-description__title section-title">Доставка</h3>
+            <p class="features-description__text">Мы&nbsp;с&nbsp;удовольствием доставим ваш товар прямо <br>к&nbsp;вашему подъезду совершенно бесплатно! Ведь <br>мы&nbsp;неплохо заработаем, поднимая его на&nbsp;ваш этаж.</p>
+          </div>
+          <!-- В стилях для .features__label есть закомментированное описание состояния :focus, которое требуется по стайлгайду.
+           Стили можно раскомментровать, они отрабатывают корректно, но на мой взгляд сейчас только нарушают "визуальный порядок"
+           работы элемента. Поэтому они закомментированы для возможного дальнейшего использования с доработкой перехода состояний на js -->
+          <input class="features__checkbox features__checkbox--guarantee visually-hidden" type="radio" id="guarantee" name="features">
+          <label class="features__label features__label--guarantee button-accent button-accent--switch" for="guarantee">Гарантия</label>
+          <div class="features__description features-description features-description--guarantee">
+            <h3 class="features-description__title section-title">Гарантия</h3>
+            <p class="features-description__text">Если из-за возгорания купленного у&nbsp;нас товара у&nbsp;вас сгорит дом&nbsp;&mdash; не&nbsp;переживайте, мы&nbsp;выдадим вам новый. Товар, не&nbsp;дом, конечно&nbsp;же.</p>
+          </div>
+          <!-- В стилях для .features__label есть закомментированное описание состояния :focus, которое требуется по стайлгайду.
+           Стили можно раскомментровать, они отрабатывают корректно, но на мой взгляд сейчас только нарушают "визуальный порядок"
+           работы элемента. Поэтому они закомментированы для возможного дальнейшего использования с доработкой перехода состояний на js -->
+          <input class="features__checkbox features__checkbox--credit visually-hidden" type="radio" id="credit" name="features">
+          <label class="features__label features__label--credit button-accent button-accent--switch" for="credit">Кредит</label>
+          <div class="features__description features-description features-description--credit">
+            <h3 class="features-description__title section-title">Кредит</h3>
+            <p class="features-description__text">Залезть в&nbsp;долговую яму стало проще! Кредитные консультанты подберут для вас наиболее выгодные условия кредита. Выгодные для банка, разумеется.</p>
+          </div>
+      </div>
+    </section>
+    <section class="main__about about container">
+      <h2 class="visually-hidden">О компании</h2>
+      <button class="about__button-wide button-wide" type="button">
+        <span class="button-wide___text">Доставим редкий товар под заказ</span>
+        <span class="button-wide___tooltip">
+          <svg class="button-wide___tooltip-icon" width="2" height="12" viewBox="0 0 2 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M2 0H0v2h2V0zM2 4H0v8h2V4z"/>
+          </svg>
+        </span>
+      </button>
+      <section class="about__section">
+        <h3 class="about__title section-title">О нас</h3>
+        <div class="about__text-wrapper">
+          <p class="about__text-unit">Огромный выбор гаджетов не&nbsp;оставит равнодушным гика, который есть в&nbsp;каждом из&nbsp;нас.</p>
+          <p class="about__text-unit">Мы&nbsp;можем доставить ваш товар в&nbsp;самые отдалённые уголки России транспортными компаниями:</p>
+        </div>
+        <ul class="about__list">
+          <li class="about__list-item">Меловые линии</li>
+          <li class="about__list-item">СДИК</li>
+          <li class="about__list-item">ТоксБерри</li>
+        </ul>
+        <a class="about__button-accent button-accent button-accent--light" href="#">Подробнее о нас</a>
+      </section>
+      <section class="about__section about__contacts contacts">
+        <h3 class="about__title section-title">Контакты</h3>
+        <p class="about__text-unit">Вы&nbsp;можете забрать товар сами, заехав в&nbsp;наш офис. Заодно сможете проверить работоспособность покупки.</p>
+        <address class="about__address">
+          <p class="about__sub-title">Интернет-магазин &laquo;Девайс&raquo;</p>
+          <p class="about__address-text">Санкт-Петербург, набережная реки Карповки, 5, литера П.</p>
+          <a class="about__address-text about__address-phone" href="tel:+78128121212">+7 (812) 812-12-12</a>
+        </address>
+        <div class="about__working-hours">
+          <p class="about__sub-title">Время работы</p>
+          <dl class="about__schedule">
+            <dt class="about__day">пн&mdash;пт:</dt>
+            <dd class="about__time">с 10:00 до 22:00</dd>
+            <dt class="about__day">сб&mdash;вс:</dt>
+            <dd class="about__time">с 10:00 до 19:00</dd>
+          </dl>
+        </div>
+        <a class="about__button-accent button-accent button-accent--light" href="#">Напишите нам</a>
+      </section>
+    </section>
+    <section class="main__subscribe subscribe">
+      <div class="subscribe__content container">
+        <h2 class="subscribe__title section-title">Подпишитесь на&nbsp;рассылку</h2>
+        <p class="subscribe__text">Еженедельный дайджест с&nbsp;обзорами новинок, длительными тест-драйвами, распаковками, а&nbsp;также акции, спецпредложения и&nbsp;вот это вот всё.</p>
+        <div class="subscribe__form-container">
+          <form class="subscribe__form" action="https://echo.htmlacademy.ru/" method="post">
+            <label class="visually-hidden" for="email">Введите ваш e-mail.</label>
+            <input class="subscribe__field" type="email" name="email" id="email" placeholder="Ваш e-mail" required>
+            <button class="subscribe__button button-additional button-additional--palette-2" type="submit">Подписаться</button>
+          </form>
+          <p class="subscribe__note">Это бесплатно</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="page__footer footer">
+    <div class="footer__content">
+      <a class="footer__logo logo" href="index.html" aria-current="page">
+        <img class="logo__img" src="img/logo-monochrome.svg" alt="device" width="145" height="36">
+      </a>
+      <p class="footer__address">
+        Санкт-Петербург, набережная реки Карповки, 5, литера П.
+      </p>
+      <ul class="footer__site-menu site-menu">
+        <li class="site-menu__item">
+          <a href="#" class="site-menu__link link-basic link-basic--palette-2">Доставка</a>
+        </li>
+        <li class="site-menu__item site-menu__item--diff-margin">
+          <a href="#" class="site-menu__link link-basic link-basic--palette-2">Гарантия</a>
+        </li>
+        <li class="site-menu__item site-menu__item--diff-margin">
+          <a href="#" class="site-menu__link link-basic link-basic--palette-2">Контакты</a>
+        </li>
+      </ul>
+      <ul class="footer__social social">
+        <li class="social__item">
+          <a class="social__link" href="https://www.facebook.com/htmlacademy" target="_blank">
+            <svg class="social__img social__img--facebook" width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M6.5 3H9V0H5.6C2.8 0 2 1.7 2 4.2V6H0v3h2v9h3V9h3.3l.6-3H5V4.5C5 3.7 5.3 3 6.5 3z"/>
+            </svg>
+            <span class="visually-hidden">Открыть аккаунт в Facebook.</span>
+          </a>
+        </li>
+        <li class="social__item social__item--instagram">
+          <a class="social__link" href="https://www.instagram.com/htmlacademy/" target="_blank">
+            <svg class="social__img social__img--instagram" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M8 10a2 2 0 100-4 2 2 0 000 4z"/>
+              <path d="M14.7 1.3c-.9-.9-2-1.3-3.4-1.3H4.7C1.9 0 0 1.9 0 4.7v6.6c0 1.4.4 2.6 1.4 3.4.9.9 2 1.3 3.3 1.3h6.6c1.4 0 2.6-.4 3.4-1.3.8-.9 1.3-2 1.3-3.4V4.7c0-1.4-.4-2.6-1.3-3.4zM8 12.1c-2.2 0-4.1-1.8-4.1-4.1S5.8 3.9 8 3.9c2.2 0 4.1 1.8 4.1 4.1s-1.9 4.1-4.1 4.1zm4.6-7.4c-.7 0-1.3-.5-1.3-1.3s.5-1.3 1.3-1.3c.7 0 1.3.6 1.3 1.3 0 .7-.6 1.3-1.3 1.3z"/>
+            </svg>
+            <span class="visually-hidden">Открыть аккаунт в Instagram.</span>
+          </a>
+        </li>
+        <li class="social__item">
+          <a class="social__link" href="https://twitter.com/htmlacademy_ru" target="_blank">
+            <svg class="social__img social__img--twitter" width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <g clip-path="url(#clip0_2868_175)">
+                <path d="M9.7.1c1.5-.5 2.6.3 3.2 1.1.5-.2 1.1-.4 1.7-.6 0 .8-.5 1.4-.8 1.6.7.2 1.2-.4 1.2-.4-.1.9-.9 1.7-1.4 1.9-.2 6.3-2.8 10.4-8.9 10.3h-.4C4 14 .6 13.6 0 12.2c2 .2 3.4-.4 4.1-1.1-.8-.3-2.4-.4-2.6-2.8.3.2.5.3 1.1.2C1.5 7.7.3 7 .4 5c.3.3.9.5 1.2.4C1 5.2-.2 2.3.8.8c1.6 1.7 3.3 3.4 6.3 3.5.2-2.1 1-3.5 2.6-4.2z"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_2868_175">
+                  <path d="M0 0h15v14H0z"/>
+                </clipPath>
+              </defs>
+            </svg>
+            <span class="visually-hidden">Открыть аккаунт в Twitter</span>
+          </a>
+        </li>
+      </ul>
+      <a class="footer__phone phone link-narrow link-narrow--palette-2" href="tel:+78128121212">Тел.: +7 (812) 812-12-12</a>
+      <a class="footer__partner-logo htmlacademy-logo" href="https://htmlacademy.ru/" target="_blank">
+        <svg class="htmlacademy-logo__img" width="115" height="34" viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HTML Academy.">
+          <path d="M0 12.9v2.6h2.5v-2.6H0zM11.6 4.5c-1.6 0-2.8.7-3.6 1.7h-.1V0h-2v15.5h2v-5.3c0-2.1 1.3-3.6 3.3-3.6 1.8 0 2.9 1.4 2.9 3.2v5.7h2V9.4c.1-3-1.8-4.9-4.5-4.9zM26.6 4.8h-4.8V1.1h-2v3.8h-1.9v2h1.9v6c0 1.7 1 2.7 2.7 2.7h4.1v-2h-3.7c-.7 0-1.1-.4-1.1-1.1V6.8h4.8v-2zM41.1 4.6c-1.6 0-2.9.8-3.5 2.1h-.1c-.6-1.2-1.8-2.1-3.4-2.1-1.4 0-2.5.8-3.1 1.8h-.1V4.8H29v10.6h2V10c0-2 1-3.5 2.6-3.5 1.5 0 2.4 1 2.4 2.6v6.3h2V9.8c0-2.4 1.4-3.3 2.6-3.3 1.5 0 2.4 1 2.4 2.6v6.3h2V8.9c.1-2.5-1.4-4.3-3.9-4.3zM47.8 12.7c0 1.7 1 2.7 2.8 2.7h2v-2h-1.7c-.7 0-1.1-.4-1.1-1.1V0h-2v12.7zM28.9 19.7c-.9-1.1-2.2-1.8-3.9-1.8-3.1 0-5.4 2.3-5.4 5.6s2.3 5.6 5.4 5.6c1.8 0 3-.8 3.8-1.9h.1v1.6h2V18.2h-2v1.5zm-3.6 7.4c-2.2 0-3.6-1.6-3.6-3.6s1.4-3.6 3.6-3.6 3.6 1.6 3.6 3.6c0 1.9-1.4 3.6-3.6 3.6zM44.2 22c-.5-2.4-2.6-4.1-5.4-4.1a5.4 5.4 0 00-5.6 5.6c0 3.1 2.2 5.6 5.6 5.6 2.8 0 4.9-1.8 5.4-4.2h-2.1a3.4 3.4 0 01-3.3 2.3c-2.2 0-3.6-1.6-3.6-3.6s1.4-3.6 3.6-3.6c1.6 0 2.8 1 3.3 2.2h2.1V22zM55.1 19.7c-.9-1.1-2.2-1.8-3.9-1.8-3.1 0-5.4 2.3-5.4 5.6s2.3 5.6 5.4 5.6c1.8 0 3-.8 3.8-1.9h.1v1.6h2V18.2h-2v1.5zm-3.6 7.4c-2.2 0-3.6-1.6-3.6-3.6s1.4-3.6 3.6-3.6 3.6 1.6 3.6 3.6c0 1.9-1.5 3.6-3.6 3.6zM68.7 19.8c-.9-1.1-2.2-1.9-3.9-1.9-3.1 0-5.4 2.3-5.4 5.6s2.2 5.6 5.4 5.6c1.7 0 3-.8 3.8-1.8h.1v1.5h2V13.4h-2v6.4zm-3.6 7.3c-2.2 0-3.6-1.6-3.6-3.6s1.4-3.6 3.6-3.6 3.6 1.6 3.6 3.6c-.1 2-1.5 3.6-3.6 3.6zM78.3 17.9c-3.3 0-5.5 2.5-5.5 5.6 0 3 2.1 5.6 5.5 5.6 2.5 0 4.5-1.3 5.2-3.6h-2.1c-.5 1-1.6 1.6-3 1.6-1.9 0-3.3-1.3-3.4-2.9h8.8c.2-3.6-2-6.3-5.5-6.3zm0 1.9c1.7 0 3 1 3.3 2.6h-6.5c.3-1.5 1.5-2.6 3.2-2.6zM98.2 17.9c-1.6 0-2.9.8-3.6 2h-.1c-.6-1.2-1.8-2-3.4-2-1.4 0-2.5.7-3.1 1.8v-1.5h-1.9v10.6h2v-5.4c0-2 1-3.4 2.6-3.5 1.5 0 2.4 1 2.4 2.6v6.3h2v-5.6c0-2.4 1.4-3.3 2.6-3.3 1.5 0 2.4 1 2.4 2.6v6.3h2v-6.5c.1-2.6-1.4-4.4-3.9-4.4zM109.4 27l-3.6-8.9h-2.2l4.8 11.6c-.3.9-.7 1.2-1.7 1.2h-2.5v2h2.5c1.8 0 2.8-.8 3.5-2.6l4.7-12.2h-2.1l-3.4 8.9z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+    <!-- модальное окно: должно открываться через js добавлением класса modal--open -->
+    <div class="modal">
+      <div class="modal__content">
+        <div class="modal__header">
+          <p class="modal__title">Доставка под заказ</p>
+          <button class="modal__close-button button-iconic button-iconic--close button-iconic--palette-1" type="button">
+            <span class="visually-hidden">Закрыть</span>
+          </button>
+        </div>
+        <form class="modal__form" action="https://echo.htmlacademy.ru/" method="post">
+          <label class="modal__label modal__label--name" for="name">Ваше имя:</label>
+          <input class="modal__field modal__field--name" type="text" id="name" name="name" placeholder="Имя Фамилия" required>
+          <p class="modal__note modal__note--name modal__note--attention">Пожалуйста, представьтесь</p>
+
+          <label class="modal__label modal__label--e-mail" for="e-mail">Ваш e-mail:</label>
+          <input class="modal__field modal__field--e-mail" type="email" id="e-mail" name="e-mail" placeholder="Введите e-mail" value="krasotka92@mail.ru" required>
+          <p class="modal__note modal__note--e-mail">Забавный у вас адрес</p>
+
+          <label class="modal__label modal__label--product" for="product">Что нужно привезти:</label>
+          <input class="modal__field modal__field--product" type="text" id="product" name="product" placeholder="В свободной форме">
+
+          <div class="modal__label-quantity-wrapper">
+            <label class="modal__label modal__label--quantity" for="quantity">Количество:</label>
+            <p class="modal__tooltip tooltip">
+              <span class="visually-hidden">Всплывающая подсказка</span>
+              <span class="tooltip__text">Постараемся найти, сколько нужно. Привезём сколько получится по&nbsp;требованиям к&nbsp;провозу багажа.</span>
+            </p>
+          </div>
+          <div class="modal__quantity-wrapper">
+            <input class="modal__field modal__field--quantity" type="text" id="quantity" name="quantity" value="1">
+            <button class="modal__quantity-button modal__quantity-button--minus button-iconic button-iconic--minus button-iconic--palette-2" type="button">
+              <span class="visually-hidden">Уменьшить</span>
+              <svg class="button-iconic__img" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M16 7H0v2h16V7z"/>
+              </svg>
+            </button>
+            <button class="modal__quantity-button modal__quantity-button--plus button-iconic button-iconic--plus button-iconic--palette-2" type="button">
+              <span class="visually-hidden">Увеличить</span>
+              <svg class="button-iconic__img" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M16 7H9V0H7v7H0v2h7v7h2V9h7V7z"/>
+              </svg>
+            </button>
+          </div>
+          <button class="modal__send-button button-accent button-accent--dark" type="submit">Отправить</button>
+        </form>
+      </div>
+    </div>
+</body>
 </html>
