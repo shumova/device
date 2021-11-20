@@ -23,9 +23,9 @@
         <div class="page-nav__search search">
           <form class="search__form" action="https://echo.htmlacademy.ru/" method="post">
             <label class="visually-hidden" for="search">Введите интересующий вас запрос.</label>
-            <!-- при проверке макета необходимо в devTools зафиксировать состояние :active поля :search__field для корректной отработки стилей этого поля и кнопки .search__button согласно стайлгайду (в "жизни" это состояние предполагается фиксировать с помощью js) -->
+            <!-- при проверке макета необходимо в devTools зафиксировать состояние :active поля :search__field (в "жизни" это состояние предполагается фиксировать с помощью js; также при подстановке состояния :active через js оно должно будет перебивать состояние :focus-within формы для отображения границы формы в чёрном цвете при фокусе на поле или кнопке) -->
             <input class="search__field" type="text" id="search" name="search" placeholder="Поиск по сайту">
-            <button class="search__button" type="submit" tabindex="-1">Найти</button>
+            <button class="search__button" type="submit">Найти</button>
           </form>
         </div>
         <ul class="page-nav__user-menu user-menu">
@@ -36,31 +36,30 @@
           <li class="user-menu__item">
             <a class="user-menu__link link-with-icon link-with-icon--compare" href="#">Сравнить</a>
           </li>
-          <li class="user-menu__item">
+          <li class="user-menu__item user-menu__item--basket">
             <a class="user-menu__link user-menu__link--basket link-with-icon link-with-icon--basket" href="#">Корзина</a>
-            <!-- popover для корзины должнен открываться с помощью js добавлением класса popover-basket--open; для его появления при проверке макета также можно выбрать в devTools состояние :active для ссылки .user-menu__link--basket-->
             <div class="user-menu__popover popover-basket">
               <ul class="popover-basket__list">
                 <li class="popover-basket__item">
-                  <a class="popover-basket__img-link" href="#" aria-label="Подробнее о любительской селфи-палке.">
+                  <a class="popover-basket__link" href="#" aria-label="Подробнее о любительской селфи-палке.">
                     <picture class="popover-basket__img-container">
                       <source srcset="img/product/product-1-thumbnail@1x.webp 1x, img/product/product-1-thumbnail@2x.webp 2x" type="image/webp">
                       <img class="popover-basket__img product-img" src="img/product/product-1-thumbnail@1x.jpg" srcset="img/product/product-1-thumbnail@2x.jpg 2x" width="41" height="43" alt="">
                     </picture>
+                    <p class="popover-basket__title">Любительская <br>селфи-палка</p>
                   </a>
-                  <a class="popover-basket__title-link" href="#">Любительская <br>селфи-палка</a>
                   <button class="popover-basket__button-delete button-iconic button-iconic--delete button-iconic--palette-1" type="button">
                     <span class="visually-hidden">Удалить</span>
                   </button>
                 </li>
                 <li class="popover-basket__item">
-                  <a class="popover-basket__img-link" href="#" aria-label="Подробнее о профессиональной селфи-палке.">
+                  <a class="popover-basket__link" href="#" aria-label="Подробнее о профессиональной селфи-палке.">
                     <picture class="popover-basket__img-container">
                       <source srcset="img/product/product-2-thumbnail@1x.webp 1x, img/product/product-2-thumbnail@2x.webp 2x" type="image/webp">
                       <img class="popover-basket__img product-img" src="img/product/product-2-thumbnail@1x.jpg" srcset="img/product/product-2-thumbnail@2x.jpg 2x" width="41" height="43" alt="">
                     </picture>
+                    <p class="popover-basket__title">Професcиональная селфи-палка</p>
                   </a>
-                  <a class="popover-basket__title-link" href="#">Професcиональная селфи-палка</a>
                   <button class="popover-basket__button-delete button-iconic button-iconic--delete button-iconic--palette-1" type="button">
                     <span class="visually-hidden">Удалить</span>
                   </button>
@@ -73,7 +72,7 @@
                 <dd class="checkout__value checkout__cost-value">2000 ₽</dd>
               </dl>
               <div class="popover-basket__basket-button-wrapper">
-                <button class="button-additional button-additional--palette-1" type="button">Открыть корзину</button>
+                <button class="popover-basket__basket-button button-additional button-additional--palette-1" type="button">Открыть корзину</button>
               </div>
             </div>
           </li>
@@ -82,7 +81,6 @@
       <div class="page-nav__site-menu-wrapper site-menu">
         <div class="site-menu__item site-menu__item--catalog">
           <a href="#" class="site-menu__link site-menu__link--catalog link-details">Каталог товаров</a>
-          <!-- popover-меню для каталога должно открываться с помощью js добавлением класса popover-catalog--open; для появления меню при проверке макета также можно выбрать в devTools состояние :active для ссылки .site-menu__link--catalog-->
           <div class="site-menu__popover popover-catalog">
             <ul class="popover-catalog__list">
               <li class="popover-catalog__item">
@@ -125,6 +123,7 @@
     <section class="main__slider slider container">
       <h2 class="visually-hidden">Промотируемые товары.</h2>
       <ol class="slider__list">
+        <!-- Актуальный слайд отображается/скрывается при добавлении/удалении класса .slider__item--current (должно быть реализовано на js)-->
         <li class="slider__item slider__item--current">
           <h3 class="visually-hidden">Квадрокоптер с лазером.</h3>
           <div class="slider__product">
@@ -165,10 +164,14 @@
                </ol>
              </div>
              <dl class="slider__description-list">
-               <dt class="slider__term">Дальность полета</dt>
-               <dd class="slider__definition">800&nbsp;м</dd>
-               <dt class="slider__term">Радиус поражения</dt>
-               <dd class="slider__definition">50&nbsp;м</dd>
+              <div class="slider__description-item">
+                <dt class="slider__term">Дальность полета</dt>
+                <dd class="slider__definition">800&nbsp;м</dd>
+              </div>
+              <div class="slider__description-item">
+                <dt class="slider__term">Радиус поражения</dt>
+                <dd class="slider__definition">50&nbsp;м</dd>
+              </div>
              </dl>
           </div>
         </li>
@@ -212,8 +215,10 @@
               </ol>
             </div>
             <dl class="slider__description-list slider__description-list--diff-size-1">
-              <dt class="slider__term">Без подзарядки</dt>
-              <dd class="slider__definition slider__definition--diff-size">48 часов</dd>
+              <div class="slider__description-item">
+                <dt class="slider__term">Без подзарядки</dt>
+                <dd class="slider__definition slider__definition--diff-size">48 часов</dd>
+              </div>
             </dl>
           </div>
         </li>
@@ -257,12 +262,18 @@
                </ol>
              </div>
              <dl class="slider__description-list slider__description-list--diff-size-2">
-               <dt class="slider__term">Длина палки</dt>
-               <dd class="slider__definition">8,5&nbsp;м</dd>
-               <dt class="slider__term">Вес палки</dt>
-               <dd class="slider__definition">5&nbsp;кг</dd>
-               <dt class="slider__term">Материал</dt>
-               <dd class="slider__definition">Карбон</dd>
+               <div class="slider__description-item">
+                 <dt class="slider__term">Длина палки</dt>
+                 <dd class="slider__definition">8,5&nbsp;м</dd>
+               </div>
+               <div class="slider__description-item slider__description-item--diff-width">
+                 <dt class="slider__term">Вес палки</dt>
+                 <dd class="slider__definition">5&nbsp;кг</dd>
+               </div>
+               <div class="slider__description-item">
+                 <dt class="slider__term">Материал</dt>
+                 <dd class="slider__definition">Карбон</dd>
+               </div>
              </dl>
           </div>
         </li>
@@ -330,27 +341,18 @@
     <section class="main__features features">
       <h2 class="visually-hidden">Сервисы</h2>
       <div class="features__content container">
-          <!-- В стилях для .features__label есть закомментированное описание состояния :focus, которое требуется по стайлгайду.
-           Стили можно раскомментровать, они отрабатывают корректно, но на мой взгляд сейчас только нарушают "визуальный порядок"
-           работы элемента. Поэтому они закомментированы для возможного дальнейшего использования с доработкой перехода состояний на js -->
           <input class="features__checkbox features__checkbox--delivery visually-hidden" type="radio" id="delivery" name="features" checked>
           <label class="features__label features__label--delivery button-accent button-accent--switch" for="delivery">Доставка</label>
           <div class="features__description features-description features-description--delivery">
             <h3 class="features-description__title section-title">Доставка</h3>
             <p class="features-description__text">Мы&nbsp;с&nbsp;удовольствием доставим ваш товар прямо <br>к&nbsp;вашему подъезду совершенно бесплатно! Ведь <br>мы&nbsp;неплохо заработаем, поднимая его на&nbsp;ваш этаж.</p>
           </div>
-          <!-- В стилях для .features__label есть закомментированное описание состояния :focus, которое требуется по стайлгайду.
-           Стили можно раскомментровать, они отрабатывают корректно, но на мой взгляд сейчас только нарушают "визуальный порядок"
-           работы элемента. Поэтому они закомментированы для возможного дальнейшего использования с доработкой перехода состояний на js -->
           <input class="features__checkbox features__checkbox--guarantee visually-hidden" type="radio" id="guarantee" name="features">
           <label class="features__label features__label--guarantee button-accent button-accent--switch" for="guarantee">Гарантия</label>
           <div class="features__description features-description features-description--guarantee">
             <h3 class="features-description__title section-title">Гарантия</h3>
             <p class="features-description__text">Если из-за возгорания купленного у&nbsp;нас товара у&nbsp;вас сгорит дом&nbsp;&mdash; не&nbsp;переживайте, мы&nbsp;выдадим вам новый. Товар, не&nbsp;дом, конечно&nbsp;же.</p>
           </div>
-          <!-- В стилях для .features__label есть закомментированное описание состояния :focus, которое требуется по стайлгайду.
-           Стили можно раскомментровать, они отрабатывают корректно, но на мой взгляд сейчас только нарушают "визуальный порядок"
-           работы элемента. Поэтому они закомментированы для возможного дальнейшего использования с доработкой перехода состояний на js -->
           <input class="features__checkbox features__checkbox--credit visually-hidden" type="radio" id="credit" name="features">
           <label class="features__label features__label--credit button-accent button-accent--switch" for="credit">Кредит</label>
           <div class="features__description features-description features-description--credit">
@@ -497,7 +499,7 @@
           <p class="modal__note modal__note--e-mail">Забавный у вас адрес</p>
 
           <label class="modal__label modal__label--product" for="product">Что нужно привезти:</label>
-          <input class="modal__field modal__field--product" type="text" id="product" name="product" placeholder="В свободной форме">
+          <input class="modal__field modal__field--product" type="text" id="product" name="product" placeholder="В свободной форме" required>
 
           <div class="modal__label-quantity-wrapper">
             <label class="modal__label modal__label--quantity" for="quantity">Количество:</label>
@@ -507,7 +509,7 @@
             </p>
           </div>
           <div class="modal__quantity-wrapper">
-            <input class="modal__field modal__field--quantity" type="text" id="quantity" name="quantity" value="1">
+            <input class="modal__field modal__field--quantity" type="text" id="quantity" name="quantity" value="1" required>
             <button class="modal__quantity-button modal__quantity-button--minus button-iconic button-iconic--minus button-iconic--palette-2" type="button">
               <span class="visually-hidden">Уменьшить</span>
               <svg class="button-iconic__img" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">

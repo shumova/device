@@ -23,9 +23,9 @@
         <div class="page-nav__search search">
           <form class="search__form" action="https://echo.htmlacademy.ru/" method="post">
             <label class="visually-hidden" for="search">Введите интересующий вас запрос.</label>
-            <!-- при проверке макета необходимо в devTools зафиксировать состояние :active поля :search__field для корректной отработки стилей этого поля и кнопки .search__button согласно стайлгайду (в "жизни" это состояние предполагается фиксировать с помощью js) -->
+            <!-- при проверке макета необходимо в devTools зафиксировать состояние :active поля :search__field (в "жизни" это состояние предполагается фиксировать с помощью js; также при подстановке состояния :active через js оно должно будет перебивать состояние :focus-within формы для отображения границы формы в чёрном цвете при фокусе на поле или кнопке) -->
             <input class="search__field" type="text" id="search" name="search" placeholder="Поиск по сайту">
-            <button class="search__button" type="submit" tabindex="-1">Найти</button>
+            <button class="search__button" type="submit">Найти</button>
           </form>
         </div>
         <ul class="page-nav__user-menu user-menu">
@@ -36,31 +36,30 @@
           <li class="user-menu__item">
             <a class="user-menu__link link-with-icon link-with-icon--compare" href="#">Сравнить</a>
           </li>
-          <li class="user-menu__item">
+          <li class="user-menu__item user-menu__item--basket">
             <a class="user-menu__link user-menu__link--basket link-with-icon link-with-icon--basket" href="#">Корзина</a>
-            <!-- popover для корзины должнен открываться с помощью js добавлением класса popover-basket--open; для его появления при проверке макета также можно выбрать в devTools состояние :active для ссылки .user-menu__link--basket-->
             <div class="user-menu__popover popover-basket">
               <ul class="popover-basket__list">
                 <li class="popover-basket__item">
-                  <a class="popover-basket__img-link" href="#" aria-label="Подробнее о любительской селфи-палке.">
+                  <a class="popover-basket__link" href="#" aria-label="Подробнее о любительской селфи-палке.">
                     <picture class="popover-basket__img-container">
                       <source srcset="img/product/product-1-thumbnail@1x.webp 1x, img/product/product-1-thumbnail@2x.webp 2x" type="image/webp">
                       <img class="popover-basket__img product-img" src="img/product/product-1-thumbnail@1x.jpg" srcset="img/product/product-1-thumbnail@2x.jpg 2x" width="41" height="43" alt="">
                     </picture>
+                    <p class="popover-basket__title">Любительская <br>селфи-палка</p>
                   </a>
-                  <a class="popover-basket__title-link" href="#">Любительская <br>селфи-палка</a>
                   <button class="popover-basket__button-delete button-iconic button-iconic--delete button-iconic--palette-1" type="button">
                     <span class="visually-hidden">Удалить</span>
                   </button>
                 </li>
                 <li class="popover-basket__item">
-                  <a class="popover-basket__img-link" href="#" aria-label="Подробнее о профессиональной селфи-палке.">
+                  <a class="popover-basket__link" href="#" aria-label="Подробнее о профессиональной селфи-палке.">
                     <picture class="popover-basket__img-container">
                       <source srcset="img/product/product-2-thumbnail@1x.webp 1x, img/product/product-2-thumbnail@2x.webp 2x" type="image/webp">
                       <img class="popover-basket__img product-img" src="img/product/product-2-thumbnail@1x.jpg" srcset="img/product/product-2-thumbnail@2x.jpg 2x" width="41" height="43" alt="">
                     </picture>
+                    <p class="popover-basket__title">Професcиональная селфи-палка</p>
                   </a>
-                  <a class="popover-basket__title-link" href="#">Професcиональная селфи-палка</a>
                   <button class="popover-basket__button-delete button-iconic button-iconic--delete button-iconic--palette-1" type="button">
                     <span class="visually-hidden">Удалить</span>
                   </button>
@@ -73,7 +72,7 @@
                 <dd class="checkout__value checkout__cost-value">2000 ₽</dd>
               </dl>
               <div class="popover-basket__basket-button-wrapper">
-                <button class="button-additional button-additional--palette-1" type="button">Открыть корзину</button>
+                <button class="popover-basket__basket-button button-additional button-additional--palette-1" type="button">Открыть корзину</button>
               </div>
             </div>
           </li>
@@ -82,7 +81,6 @@
       <div class="page-nav__site-menu-wrapper site-menu">
         <div class="site-menu__item site-menu__item--catalog">
           <a href="#" class="site-menu__link site-menu__link--catalog link-details">Каталог товаров</a>
-          <!-- popover-меню для каталога должно открываться с помощью js добавлением класса popover-catalog--open; для появления меню при проверке макета также можно выбрать в devTools состояние :active для ссылки .site-menu__link--catalog-->
           <div class="site-menu__popover popover-catalog">
             <ul class="popover-catalog__list">
               <li class="popover-catalog__item">
@@ -150,14 +148,14 @@
                 </button>
                 <label class="catalog-filter__range-label catalog-filter__range-label--min-price" for="min-price">
                   <span>от</span>
-                  <input class="catalog-filter__range-field" type="number" name="min-price" id="min-price" value="0">
+                  <input class="catalog-filter__range-field" type="number" name="min-price" id="min-price" value="0" disabled tabindex="-1">
                 </label>
                 <button class="catalog-filter__range-toggle catalog-filter__range-toggle--max" type="button">
                   <span class="visually-hidden">Изменить максимальную цену.</span>
                 </button>
                 <label class="catalog-filter__range-label catalog-filter__range-label--max-price" for="max-price">
                   <span>до</span>
-                  <input class="catalog-filter__range-field" type="number" name="max-price" id="max-price" value="5000">
+                  <input class="catalog-filter__range-field" type="number" name="max-price" id="max-price" value="5000" disabled tabindex="-1">
                 </label>
               </div>
             </div>
@@ -242,48 +240,59 @@
           </div>
         </div>
         <ul class="catalog__list">
-          <li class="catalog__item catalog-item">
+          <!-- для появления значка "new" необходимо добавить класс .catalog-item__item-link--new ссылке .catalog-item__item-link -->
+         <li class="catalog__item catalog-item">
             <a class="catalog-item__item-link hover" href="#">
               <h3 class="catalog-item__title">Любительская селфи-палка</h3>
-              <picture class="catalog-item__img-container">
-                <source srcset="img/product/product-1@1x.webp 1x, img/product/product-1@2x.webp 2x" type="image/webp">
-                <img class="catalog-item__img product-img" src="img/product/product-1@1x.jpg" srcset="img/product/product-1@2x.jpg 2x" alt="" width="360" height="380">
-              </picture>
+              <div class="catalog-item__img-container">
+                <picture>
+                  <source srcset="img/product/product-1@1x.webp 1x, img/product/product-1@2x.webp 2x" type="image/webp">
+                  <img class="catalog-item__img product-img" src="img/product/product-1@1x.jpg" srcset="img/product/product-1@2x.jpg 2x" alt="" width="360" height="380">
+                </picture>
+                <div class="catalog-item__link-text button-accent button-accent--dark">Подробнее</div>
+              </div>
               <p class="catalog-item__price">500 ₽</p>
-              <div class="catalog-item__link-text button-accent button-accent--dark">Подробнее</div>
             </a>
           </li>
           <li class="catalog__item catalog-item">
             <a class="catalog-item__item-link" href="#">
               <h3 class="catalog-item__title">Профессиональная <br>селфи-палка</h3>
-              <picture class="catalog-item__img-container">
-                <source srcset="img/product/product-2@1x.webp 1x, img/product/product-2@2x.webp 2x" type="image/webp">
-                <img class="catalog-item__img product-img" src="img/product/product-2@1x.jpg" srcset="img/product/product-2@2x.jpg 2x" alt="" width="360" height="380">
-              </picture>
+              <div class="catalog-item__img-container">
+                <picture>
+                  <source srcset="img/product/product-2@1x.webp 1x, img/product/product-2@2x.webp 2x" type="image/webp">
+                  <img class="catalog-item__img product-img" src="img/product/product-2@1x.jpg" srcset="img/product/product-2@2x.jpg 2x" alt="" width="360" height="380">
+                </picture>
+                <div class="catalog-item__link-text button-accent button-accent--dark">Подробнее</div>
+              </div>
               <p class="catalog-item__price">1 500 ₽</p>
-              <div class="catalog-item__link-text button-accent button-accent--dark">Подробнее</div>
             </a>
           </li>
           <li class="catalog__item catalog-item">
             <a class="catalog-item__item-link" href="#">
               <h3 class="catalog-item__title">Непотопляемая <br>селфи-палка</h3>
-              <picture class="catalog-item__img-container">
-                <source srcset="img/product/product-3@1x.webp 1x, img/product/product-3@2x.webp 2x" type="image/webp">
-                <img class="catalog-item__img product-img" src="img/product/product-3@1x.jpg" srcset="img/product/product-3@2x.jpg 2x" alt="" width="360" height="380">
-              </picture>
-              <p class="catalog-item__price">2 500 ₽</p>
               <div class="catalog-item__link-text button-accent button-accent--dark">Подробнее</div>
+              <div class="catalog-item__link-text button-accent button-accent--dark">Подробнее</div>
+              <div class="catalog-item__img-container">
+                <picture>
+                  <source srcset="img/product/product-3@1x.webp 1x, img/product/product-3@2x.webp 2x" type="image/webp">
+                  <img class="catalog-item__img product-img" src="img/product/product-3@1x.jpg" srcset="img/product/product-3@2x.jpg 2x" alt="" width="360" height="380">
+                </picture>
+                <div class="catalog-item__link-text button-accent button-accent--dark">Подробнее</div>
+              </div>
+              <p class="catalog-item__price">2 500 ₽</p>
             </a>
           </li>
           <li class="catalog__item catalog-item">
             <a class="catalog-item__item-link catalog-item__item-link--new" href="#">
               <h3 class="catalog-item__title">Селфи-палка &laquo;Следуй за&nbsp;мной&raquo;</h3>
-              <picture class="catalog-item__img-container">
-                <source srcset="img/product/product-4@1x.webp 1x, img/product/product-4@2x.webp 2x" type="image/webp">
-                <img class="catalog-item__img product-img" src="img/product/product-4@1x.jpg" srcset="img/product/product-4@2x.jpg 2x" alt="" width="360" height="380">
-              </picture>
+              <div class="catalog-item__img-container">
+                <picture>
+                  <source srcset="img/product/product-4@1x.webp 1x, img/product/product-4@2x.webp 2x" type="image/webp">
+                  <img class="catalog-item__img product-img" src="img/product/product-4@1x.jpg" srcset="img/product/product-4@2x.jpg 2x" alt="" width="360" height="380">
+                </picture>
+                <div class="catalog-item__link-text button-accent button-accent--dark">Подробнее</div>
+              </div>
               <p class="catalog-item__price">4 900 ₽</p>
-              <div class="catalog-item__link-text button-accent button-accent--dark">Подробнее</div>
             </a>
           </li>
         </ul>
