@@ -1272,8 +1272,22 @@
   padding: 9px 13px 10px 17px;
 }
 
+.button-accent--switch-active {
+  width: 284px;
+
+  color: var(--special-yellow-light);
+
+  background-color: var(--basic-black);
+  border-right: 124px solid var(--basic-black);
+  cursor: auto;
+}
+
 .button-accent--switch::before {
   background-image: repeating-linear-gradient(to bottom, transparent 0 5px, var(--special-yellow-dark) 5px 13px, transparent 13px 21px);
+}
+
+.button-accent--switch-active::before {
+  background-image: none;
 }
 
 .button-accent--switch:hover {
@@ -1282,6 +1296,51 @@
 
 .button-accent--switch:hover::before {
   background-image: none;
+}
+
+.button-accent--switch-active:hover {
+  width: 284px;
+
+  color: var(--special-yellow-light);
+
+  background-color: var(--basic-black);
+  border-right: 124px solid var(--basic-black);
+}
+
+.button-accent--switch:focus {
+  width: 160px;
+
+  color: var(--basic-black);
+
+  background-color: transparent;
+  border-right: none;
+  outline: none;
+}
+
+.button-accent--switch:focus::before {
+  background-image: repeating-linear-gradient(to bottom, transparent 0 5px, var(--special-purple) 5px 13px, transparent 13px 21px);
+}
+
+.button-accent--switch:focus:not(:focus-visible)::before {
+  background-image: repeating-linear-gradient(to bottom, transparent 0 5px, var(--special-yellow-dark) 5px 13px, transparent 13px 21px);
+}
+
+.button-accent--switch-active:focus:not(:focus-visible) {
+  min-width: 284px;
+  max-width: 284px;
+
+  color: var(--special-yellow-light);
+
+  background-color: var(--basic-black);
+  border-right: 124px solid var(--basic-black);
+}
+
+.button-accent--switch-active:focus:not(:focus-visible)::before {
+  background-image: none;
+}
+
+.button-accent--switch:focus-visible::before {
+  background-image: repeating-linear-gradient(to bottom, transparent 0 5px, var(--special-purple) 5px 13px, transparent 13px 21px);
 }
 
 /* button-dot */
@@ -2751,95 +2810,22 @@
   background-color: var(--basic-black);
 }
 
-.features__label {
+.features__button {
   margin: 13px 0;
 }
 
-.features__label--delivery {
+.features__button--delivery {
   grid-row: 2 / 3;
 }
 
-.features__label--guarantee {
+.features__button--guarantee {
   margin-top: 11px;
   grid-row: 3 / 4;
 }
 
-.features__label--credit {
+.features__button--credit {
   margin-top: 12px;
   grid-row: 4 / 5;
-}
-
-.features__checkbox:checked + .features__label {
-  width: 284px;
-
-  color: var(--special-yellow-light);
-
-  background-color: var(--basic-black);
-  border-right: 124px solid var(--basic-black);
-  cursor: auto;
-}
-
-.features__checkbox:checked + .features__label::before {
-  background-image: none;
-}
-
-.features__checkbox:focus + .features__label {
-  min-width: 160px;
-  max-width: 160px;
-
-  color: var(--basic-black);
-
-  background-color: transparent;
-  border-right: none;
-  outline: none;
-}
-
-.features__checkbox:focus + .features__label::before {
-  background-image: repeating-linear-gradient(to bottom, transparent 0 5px, var(--special-purple) 5px 13px, transparent 13px 21px);
-}
-
-.features__checkbox:focus:not(:focus-visible) + .features__label {
-  min-width: 160px;
-  max-width: 160px;
-
-  color: var(--basic-black);
-
-  background-color: transparent;
-  border-right: none;
-  outline: none;
-}
-
-.features__checkbox:focus:not(:focus-visible) + .features__label::before {
-  background-image: repeating-linear-gradient(to bottom, transparent 0 5px, var(--special-yellow-dark) 5px 13px, transparent 13px 21px);
-}
-
-.features__checkbox:checked:focus:not(:focus-visible) + .features__label {
-  min-width: 284px;
-  max-width: 284px;
-
-  color: var(--special-yellow-light);
-
-  background-color: var(--basic-black);
-  border-right: 124px solid var(--basic-black);
-}
-
-.features__checkbox:checked:focus:not(:focus-visible) + .features__label::before {
-  background-image: none;
-}
-
-.features__checkbox:focus-visible + .features__label {
-  min-width: 160px;
-  max-width: 160px;
-
-  color: var(--basic-black);
-
-  background-color: transparent;
-  border-right: none;
-  outline: none;
-}
-
-.features__checkbox:focus-visible + .features__label::before {
-  background-image: repeating-linear-gradient(to bottom, transparent 0 5px, var(--special-purple) 5px 13px, transparent 13px 21px);
 }
 
 .features-description {
@@ -2856,18 +2842,6 @@
 }
 
 .features-description--shown {
-  visibility: visible;
-}
-
-.features__checkbox--delivery:checked ~ .features-description--delivery {
-  visibility: visible;
-}
-
-.features__checkbox--guarantee:checked ~ .features-description--guarantee {
-  visibility: visible;
-}
-
-.features__checkbox--credit:checked ~ .features-description--credit {
   visibility: visible;
 }
 

@@ -24,7 +24,7 @@
           <form class="search__form" action="https://echo.htmlacademy.ru/" method="post">
             <label class="visually-hidden" for="search">Введите интересующий вас запрос.</label>
             <!-- при проверке макета необходимо в devTools зафиксировать состояние :active поля :search__field (в "жизни" это состояние предполагается фиксировать с помощью js; также при подстановке состояния :active через js оно должно будет перебивать состояние :focus-within формы для отображения границы формы в чёрном цвете при фокусе на поле или кнопке) -->
-            <input class="search__field" type="text" id="search" name="search" placeholder="Поиск по сайту">
+            <input class="search__field" type="search" id="search" name="search" placeholder="Поиск по сайту">
             <button class="search__button" type="submit">Найти</button>
           </form>
         </div>
@@ -182,12 +182,6 @@
               <source srcset="img/slider/slider-2@1x.webp 1x, img/slider/slider-2@2x.webp 2x" type="image/webp">
               <img class="slider__img product-img" src="img/slider/slider-2@1x.png" srcset="img/slider/slider-2@2x.png 2x" alt="" width="560" height="560">
             </picture>
-            <button class="slider__button-prev button-slide button-slide--prev" type="button">
-              <span class="visually-hidden">Предыдущий слайд</span>
-            </button>
-            <button class="slider__button-next button-slide button-slide--next" type="button">
-              <span class="visually-hidden">Следующий слайд</span>
-            </button>
           </div>
           <div class="slider__offer">
             <div class="slider__text">
@@ -196,23 +190,6 @@
             </div>
             <div class="slider__controls">
               <a class="slider__more button-accent button-accent--light" href="#">Подробнее</a>
-              <ol class="slider__dots">
-                <li class="slider__dot">
-                  <button class="button-dot" type="button">
-                    <span class="visually-hidden">Первый слайд</span>
-                  </button>
-                </li>
-                <li class="slider__dot">
-                  <button class="button-dot button-dot--current" type="button">
-                    <span class="visually-hidden">Второй слайд</span>
-                  </button>
-                </li>
-                <li class="slider__dot">
-                  <button class="button-dot" type="button">
-                    <span class="visually-hidden">Третий слайд</span>
-                  </button>
-                </li>
-              </ol>
             </div>
             <dl class="slider__description-list slider__description-list--diff-size-1">
               <div class="slider__description-item">
@@ -229,12 +206,6 @@
               <source srcset="img/slider/slider-3@1x.webp 1x, img/slider/slider-3@2x.webp 2x" type="image/webp">
               <img class="slider__img product-img" src="img/slider/slider-3@1x.png" srcset="img/slider/slider-3@2x.png 2x" alt="" width="560" height="560">
             </picture>
-            <button class="slider__button-prev button-slide button-slide--prev" type="button">
-              <span class="visually-hidden">Предыдущий слайд</span>
-            </button>
-            <button class="slider__button-next button-slide button-slide--next" type="button">
-              <span class="visually-hidden">Следующий слайд</span>
-            </button>
           </div>
           <div class="slider__offer">
             <div class="slider__text">
@@ -243,23 +214,6 @@
              </div>
              <div class="slider__controls">
                <a class="slider__more button-accent button-accent--light" href="#">Подробнее</a>
-               <ol class="slider__dots">
-                 <li class="slider__dot">
-                   <button class="button-dot" type="button">
-                     <span class="visually-hidden">Первый слайд</span>
-                   </button>
-                 </li>
-                 <li class="slider__dot">
-                   <button class="button-dot" type="button">
-                     <span class="visually-hidden">Второй слайд</span>
-                   </button>
-                 </li>
-                 <li class="slider__dot">
-                   <button class="button-dot button-dot--current" type="button">
-                     <span class="visually-hidden">Третий слайд</span>
-                   </button>
-                 </li>
-               </ol>
              </div>
              <dl class="slider__description-list slider__description-list--diff-size-2">
                <div class="slider__description-item">
@@ -282,8 +236,6 @@
     <section class="main__categories categories container">
       <h2 class="visually-hidden">Категории товаров.</h2>
       <ul class="categories__list">
-
-
         <li class="categories__item">
           <a class="categories__link" href="#">
             <h3 class="categories__title">Виртуальная реальность</h3>
@@ -341,24 +293,22 @@
     <section class="main__features features">
       <h2 class="visually-hidden">Сервисы</h2>
       <div class="features__content container">
-          <input class="features__checkbox features__checkbox--delivery visually-hidden" type="radio" id="delivery" name="features" checked>
-          <label class="features__label features__label--delivery button-accent button-accent--switch" for="delivery">Доставка</label>
-          <div class="features__description features-description features-description--delivery">
-            <h3 class="features-description__title section-title">Доставка</h3>
-            <p class="features-description__text">Мы&nbsp;с&nbsp;удовольствием доставим ваш товар прямо <br>к&nbsp;вашему подъезду совершенно бесплатно! Ведь <br>мы&nbsp;неплохо заработаем, поднимая его на&nbsp;ваш этаж.</p>
-          </div>
-          <input class="features__checkbox features__checkbox--guarantee visually-hidden" type="radio" id="guarantee" name="features">
-          <label class="features__label features__label--guarantee button-accent button-accent--switch" for="guarantee">Гарантия</label>
-          <div class="features__description features-description features-description--guarantee">
-            <h3 class="features-description__title section-title">Гарантия</h3>
-            <p class="features-description__text">Если из-за возгорания купленного у&nbsp;нас товара у&nbsp;вас сгорит дом&nbsp;&mdash; не&nbsp;переживайте, мы&nbsp;выдадим вам новый. Товар, не&nbsp;дом, конечно&nbsp;же.</p>
-          </div>
-          <input class="features__checkbox features__checkbox--credit visually-hidden" type="radio" id="credit" name="features">
-          <label class="features__label features__label--credit button-accent button-accent--switch" for="credit">Кредит</label>
-          <div class="features__description features-description features-description--credit">
-            <h3 class="features-description__title section-title">Кредит</h3>
-            <p class="features-description__text">Залезть в&nbsp;долговую яму стало проще! Кредитные консультанты подберут для вас наиболее выгодные условия кредита. Выгодные для банка, разумеется.</p>
-          </div>
+        <!-- для активации необходимо добавить класс .button-accent--switch-active кнопке и класс .features-description--shown - блоку с текстом .features-description -->
+        <button class="features__button features__button--delivery button-accent button-accent--switch button-accent--switch-active" type="button">Доставка</button>
+        <div class="features__description features-description features-description--delivery features-description--shown">
+          <h3 class="features-description__title section-title">Доставка</h3>
+          <p class="features-description__text">Мы&nbsp;с&nbsp;удовольствием доставим ваш товар прямо <br>к&nbsp;вашему подъезду совершенно бесплатно! Ведь <br>мы&nbsp;неплохо заработаем, поднимая его на&nbsp;ваш этаж.</p>
+        </div>
+        <button class="features__button features__button--guarantee button-accent button-accent--switch" type="button">Гарантия</button>
+        <div class="features__description features-description features-description--guarantee">
+          <h3 class="features-description__title section-title">Гарантия</h3>
+          <p class="features-description__text">Если из-за возгорания купленного у&nbsp;нас товара у&nbsp;вас сгорит дом&nbsp;&mdash; не&nbsp;переживайте, мы&nbsp;выдадим вам новый. Товар, не&nbsp;дом, конечно&nbsp;же.</p>
+        </div>
+        <button class="features__button features__button--credit button-accent button-accent--switch" type="button">Кредит</button>
+        <div class="features__description features-description features-description--credit">
+          <h3 class="features-description__title section-title">Кредит</h3>
+          <p class="features-description__text">Залезть в&nbsp;долговую яму стало проще! Кредитные консультанты подберут для вас наиболее выгодные условия кредита. Выгодные для банка, разумеется.</p>
+        </div>
       </div>
     </section>
     <section class="main__about about container">
